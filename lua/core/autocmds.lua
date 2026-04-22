@@ -4,12 +4,12 @@
 -- конфига. Это позволяет избежать дублирования команд.
 local core_group = vim.api.nvim_create_augroup('CoreAutocmds', { clear = true })
 
--- Подстветка скопированного текста (при помощи y, yy, yiw и т.д.).
+-- Подсветка скопированного текста (при помощи y, yy, yiw и т.д.).
 vim.api.nvim_create_autocmd('TextYankPost', {
   group = core_group,
   desc = 'Подсветка скопированного текста',
   callback = function()
-    vim.hl.on_yank({ timeout = 150 }) -- задержка для подстветки
+    vim.hl.on_yank({ timeout = 150 }) -- задержка для подсветки
   end,
 })
 
