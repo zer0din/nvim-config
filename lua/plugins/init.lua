@@ -29,7 +29,11 @@ vim.pack.add({
 		src = 'https://github.com/nvim-treesitter/nvim-treesitter',
 		version = 'master'
 	},
+	'https://github.com/ibhagwan/fzf-lua',
+	'https://github.com/nvim-tree/nvim-tree.lua',
 })
 
 -- Подключение конфигураций конкретных плагинов.
 require('plugins.treesitter')
+require('plugins.fzf')
+require('plugins.nvim-tree')
