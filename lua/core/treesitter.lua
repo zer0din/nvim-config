@@ -2,6 +2,9 @@
 
 local group = vim.api.nvim_create_augroup('CoreTreesitter', { clear = true })
 
+-- Регистрация парсера 'bash' для .sh-файлов.
+vim.treesitter.language.register('bash', { 'sh' })
+
 -- Включить treesitter-подсветку при определении плагинга.
 -- Если парсера для языка нет, то включится обычная regex-подсветка.
 vim.api.nvim_create_autocmd('FileType', {
