@@ -30,7 +30,7 @@ return {
 				globals = { 'vim' },
 			},
 			-- Доступные библиотеки. Сервер должен знать про vim.api, vim.opt, vim.fn и т.д.
-			workspaces = {
+			workspace = {
 				-- Указание ратнайм-файлов nvim, там определены все vim.*
 				library = vim.api.nvim_get_runtime_file('', true),
 				-- При больших проектах сервер может спрашивать "scan all files?".

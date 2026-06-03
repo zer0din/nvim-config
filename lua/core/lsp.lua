@@ -61,7 +61,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 -- Активация серверов.
--- Именя соответствуют файлвм в ~/.config/nvin/lua/lsp/.
+-- Имена соответствуют файлам в ~/.config/nvin/lua/lsp/.
 vim.lsp.enable({
 	'lua_ls',
 })

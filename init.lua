@@ -3,9 +3,10 @@ vim.g.mapleader = '\\'
 vim.g.maplocalleader = '\\'
 
 -- Полключение модулей с настройками
-require('core.options')  -- Базовые опции
-require('core.keymaps')  -- Привязки клавиш
-require('core.autocmds') -- Автокоманды
-require('core.lsp')      -- Настройки LSP
+require('core.options')    -- Базовые опции
+require('core.keymaps')    -- Привязки клавиш
+require('core.autocmds')   -- Автокоманды
+require('core.treesitter') -- Настрои встроенного treesitter
+require('core.lsp')        -- Настройки LSP
 
-require('plugins')       -- Плагины (lua/plugins/init.lua).
+require('plugins')         -- Плагины (lua/plugins/init.lua).
