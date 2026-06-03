@@ -6,4 +6,6 @@ vim.g.maplocalleader = '\\'
 require('core.options')  -- Базовые опции
 require('core.keymaps')  -- Привязки клавиш
 require('core.autocmds') -- Автокоманды
+require('core.lsp')      -- Настройки LSP
+
 require('plugins')       -- Плагины (lua/plugins/init.lua).
