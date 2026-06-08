@@ -64,5 +64,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 -- Имена соответствуют файлам в ~/.config/nvin/lua/lsp/.
 vim.lsp.enable({
 	'lua_ls',  -- Lua
+	'clangd',  -- C
 	'serve_d', -- D
 })

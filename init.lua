@@ -7,6 +7,7 @@ require('core.options')    -- Базовые опции
 require('core.keymaps')    -- Привязки клавиш
 require('core.autocmds')   -- Автокоманды
 require('core.treesitter') -- Настрои встроенного treesitter
+require('core.shellcheck') -- Подключенеи shellcheck (для диагностики shell-скриптов)
 require('core.lsp')        -- Настройки LSP
 
 require('plugins')         -- Плагины (lua/plugins/init.lua).
