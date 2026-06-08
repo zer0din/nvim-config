@@ -1,7 +1,7 @@
 # nvim-config
 
 Персональная конфигурация NeoVim для использования в качестве IDE.
-Целевая система — Fedora Linux.
+Целевая система - Fedora Linux.
 
 ## Требования
 
@@ -19,26 +19,27 @@ git clone https://github.com/zer0din/nvim-config.git ~/.config/nvim
 ### 2. Плагины
 
 Ставятся автоматически при первом запуске `nvim` через `vim.pack`.
-При первом старте появится запрос на установку — подтвердить.
+При первом старте появится запрос на установку - подтвердить.
 Версии зафиксированы в `nvim-pack-lock.json`, на новой машине поставятся те же.
 
-- `fzf-lua` — нечёткий поиск (файлы, текст, буферы)
-- `nvim-tree.lua` — дерево файлов
-- `nvim-web-devicons` — иконки
+- `fzf-lua` - нечёткий поиск (файлы, текст, буферы)
+- `nvim-tree.lua` - дерево файлов
+- `nvim-web-devicons` - иконки
 
 ### 3. Системные пакеты
 
 ```bash
-sudo dnf install lua-language-server fzf ripgrep fd-find
+sudo dnf install lua-language-server clang-tools-extra fzf ripgrep fd-find
 ```
 
-- `lua-language-server` — LSP-сервер для Lua
-- `fzf`, `ripgrep`, `fd-find` — внешние утилиты для `fzf-lua`
+- `lua-language-server` - LSP-сервер для Lua
+- `clang-tools-extra` - LSP-сервер для C (использует compile_flags.txt для многофайловых проектов)
+- `fzf`, `ripgrep`, `fd-find` - внешние утилиты для `fzf-lua`
 
 Для иконок в дереве файлов нужен установленный в системе шрифт Nerd Font,
 выбранный шрифтом терминала.
 
-### 4. serve-d — LSP-сервер для D (сборка из исходников)
+### 4. serve-d - LSP-сервер для D (сборка из исходников)
 
 В репозиториях Fedora пакета нет. Зависимости для сборки:
 
@@ -59,26 +60,5 @@ cp ~/src/serve-d/serve-d ~/.local/bin/
 
 serve-d должен оказаться в `PATH`. Проверка: `serve-d --version`.
 DCD (автодополнение), dfmt (форматирование) и dscanner (линтинг)
-вкомпилированы в serve-d — отдельно ставить не нужно.
+вкомпилированы в serve-d - отдельно ставить не нужно.
 
-## Структура
-
-```
-~/.config/nvim/
-├── init.lua               — точка входа: leader-клавиши и подключение модулей
-├── nvim-pack-lock.json    — зафиксированные версии плагинов (vim.pack)
-├── lsp/                   — конфиги LSP-серверов (автозагрузка NeoVim)
-│   ├── lua_ls.lua         — Lua
-│   └── serve_d.lua        — D
-└── lua/
-    ├── core/              — базовая настройка, не зависит от плагинов
-    │   ├── options.lua    — опции редактора
-    │   ├── keymaps.lua    — глобальные привязки клавиш
-    │   ├── autocmds.lua   — автокоманды
-    │   ├── treesitter.lua — встроенная подсветка treesitter
-    │   └── lsp.lua        — общая инфраструктура LSP
-    └── plugins/
-        ├── init.lua       — список плагинов (vim.pack.add)
-        ├── fzf.lua        — настройка fzf-lua
-        └── tree.lua       — настройка nvim-tree
-```
