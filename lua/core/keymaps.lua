@@ -28,3 +28,8 @@ vim.keymap.set('n', '<leader>tw',
 	end,
 	{ desc = 'Включить\\выключить перенос текста' }
 )
+
+-- Открыть встроенный терминал в горизонтальном сплите снизу (<leader>T).
+-- botright - сплит во всю ширину, 15split - высота 15 строк.
+vim.keymap.set('n', '<leader>T', '<cmd>botright 15 split | terminal<CR>',
+	{ desc = 'Показать терминал снизу' })
