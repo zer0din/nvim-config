@@ -45,7 +45,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 			vim.tbl_extend('force', opts, { desc = 'LSP: к декларации' }))
 
 		-- Показать диагностику текущей строки во всплывающем окне.
-		vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float,
+		vim.keymap.set('n', '<leader>le', vim.diagnostic.open_float,
 			vim.tbl_extend('force', opts, { desc = 'Показать диагностику строки' }))
 
 		-- Включить автодоплнение по триггерным символам сервера.
