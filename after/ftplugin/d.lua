@@ -25,11 +25,13 @@ local dub_root = vim.fs.find(
 
 -- Если внутри dub-проекта
 if #dub_root > 0 then
-	vim.bo.makeprg = 'dub build'
+	-- Итоговый файл будет включать отладочную информацию (--build=debug)
+	vim.bo.makeprg = 'dub build --build=debug'
 else -- Одиночный .d-файл
 	-- dmd компилирует и сохраняет собраный файл рядом.
+	-- Итоговый файл будет включать отладочную информацию (-g)
 	-- % - имя файла, %< - имя файла без расширения.
-	vim.bo.makeprg = 'dmd -of=%< %'
+	vim.bo.makeprg = 'dmd -g -of=%< %'
 end
 
 -- Назначения клавишь для текущего буфера.
