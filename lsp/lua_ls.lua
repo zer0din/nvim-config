@@ -15,32 +15,17 @@ return {
 		'stylua.toml',
 		'.git',
 	},
-	-- Настройки самого lua-language-server
+	-- Настройки самого lua-language-server.
+	-- Только для нейтрального окружения.
+	-- Особенности для разных проектов нужно задать в .luarc.json.
+	-- Например, для NeoVim в директории .config/nvim, или для проектов
+	-- Love2D и PlayDate в своих директория со своми параметрами.
 	settings = {
 		Lua = {
-			-- Версия Lua.
-			runtime = {
-				-- nvim использует LuaJIT для своего API
-				version = 'LuaJIT',
-			},
-			-- Подсказки и проверк
-			diagnostics = {
-				-- vim устанавливается глобальной переменной, чтоб небыло
-				-- предупреждения "undefined global vim"
-				globals = { 'vim' },
-			},
-			-- Доступные библиотеки. Сервер должен знать про vim.api, vim.opt, vim.fn и т.д.
-			workspace = {
-				-- Указание ратнайм-файлов nvim, там определены все vim.*
-				library = vim.api.nvim_get_runtime_file('', true),
-				-- При больших проектах сервер может спрашивать "scan all files?".
-				-- Отключить сторонний библиотечный сканер, чтоб не спрашивал.
-				checkThirdParty = false,
-			},
-			-- Отключение телеметрии
-			telemetry = {
-				enable = false,
-			},
+			-- Отключить сторонний библиотечный сканер, чтоб не спрашивал.
+			workspace = { checkThirdParty = false },
+			-- Отключение телеметрии.
+			telemetry = { enable = false },
 		},
 	},
 }
