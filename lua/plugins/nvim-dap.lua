@@ -85,6 +85,12 @@ map('<leader>dO', dap.step_out, 'Debug: шаг наружу')
 map('<leader>dt', dap.terminate, 'Debug: завершить сессию')
 map('<leader>dr', dap.repl.open, 'Debug: открыть REPL (консоль gdb)')
 map('<leader>du', dapui.toggle, 'Debug: переключить панель')
+map('<leader>dw', function()
+	require('dapui').elements.watches.add(vim.fn.expand('<cword>'))
+end, 'Debug: добавить переменную в watch')
+map('<leader>de', function()
+	require('dapui').eval()
+end, 'Debug: вычислить выражение под курсором')
 
 -- Определение значка и цвета для точки останова
 vim.fn.sign_define('DapBreakpoint', {
