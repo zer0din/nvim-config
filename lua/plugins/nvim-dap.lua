@@ -13,6 +13,7 @@ dap.adapters.gdb = {
 }
 
 -- Конфигурация запуска для C.
+-- Сборка отлаживаемого файла должна быть выполненна с -g, для включения отладочной информации.
 -- Конфигураций может быть несколько для одного типа файла. Тогда NVim предложит
 -- выбрать нужную конфигурацию.
 dap.configurations.c = {
@@ -26,6 +27,23 @@ dap.configurations.c = {
 		-- after/ftplugin/c.lua
 		program = function()
 			local default = vim.fn.expand('%:p:r') -- полный путь файла без расширения
+			return vim.fn.input('Путь к исполняемому файлу: ', default, 'file')
+		end,
+		cwd = '${workspaceFolder}',
+		stopAtBeginningOfMainSubprogram = false,
+	},
+}
+
+-- Конфигурация запуска для D.
+-- Отлаживаемый файл должен быть собран с опцией -g (dmd -g), для одиночного файла, и с
+-- опцией --buil=debug для dub-проекта (dub build --build=debug).
+dap.configurations.d = {
+	{
+		name = 'Запуск (gdb)',
+		type = 'gdb',
+		request = 'launch',
+		program = function()
+			local default = vim.fn.expand('%:p:r')
 			return vim.fn.input('Путь к исполняемому файлу: ', default, 'file')
 		end,
 		cwd = '${workspaceFolder}',
