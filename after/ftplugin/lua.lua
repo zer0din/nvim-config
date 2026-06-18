@@ -43,3 +43,9 @@ vim.keymap.set('n', '<leader>mb', '<cmd>make<CR>',
 
 vim.keymap.set('n', '<leader>mq', '<cmd>copen<CR>',
 	vim.tbl_extend('force', opts, { desc = 'Открыть quickfix' }))
+
+vim.keymap.set('n', '<leader>mr',
+	function()
+		vim.system({ 'PlaydateSimulator', output })
+	end,
+	vim.tbl_extend('force', opts, { desc = 'Запустить в симуляторе PlayDate' }))
