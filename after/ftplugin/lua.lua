@@ -25,9 +25,12 @@ local project_root = vim.fs.dirname(sources_dir)
 -- Имя проекта (корневой каталог) для имени файла готовой сборки (.pdx).
 local project_name = vim.fs.basename(project_root)
 
+-- Каталог для сборки
+local build_dir = project_root .. '/build'
+
 -- Выходной путь для сборки (<корень>/build/<имя_проекта>.pdx)
 -- Каталог build не создается автоматически (должен быть создан вручную)
-local output = project_root .. '/build/' .. project_name .. '.pdx'
+local output = build_dir .. '/' .. project_name .. '.pdx'
 
 -- Настройки makeprg (pdc <каталог_исходников> <результат>.pdx)
 vim.bo.makeprg = 'pdc ' .. sources_dir .. ' ' .. output
@@ -38,7 +41,12 @@ vim.bo.errorformat = 'error: %f:%l: %m'
 
 -- Привязки клавиш
 local opts = { buffer = true }
-vim.keymap.set('n', '<leader>mb', '<cmd>make<CR>',
+
+vim.keymap.set('n', '<leader>mb',
+	function()
+		vim.fn.mkdir(build_dir, 'p')
+		vim.cmd.make()
+	end,
 	vim.tbl_extend('force', opts, { desc = 'Собрать .pdx (PlayDate)' }))
 
 vim.keymap.set('n', '<leader>mq', '<cmd>copen<CR>',
